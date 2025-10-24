@@ -8,7 +8,7 @@ import openai
 def askGpt(prompt,apikey):
     client = openai.OpenAI(api_key = apikey)
     response = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model="gpt-5",
     messages=[{"role": "user", "content": prompt}])
     gptResponse = response.choices[0].message.content
     return gptResponse
