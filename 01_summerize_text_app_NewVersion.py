@@ -35,14 +35,24 @@ def main():
     text = st.text_area("요약 할 글을 입력하세요")
     if st.button("요약"):
         prompt = f'''
-        **Instructions** :
-    - You are an expert assistant that summarizes text into **Korean language**.
-    - Your task is to summarize the **text** sentences in **Korean language**.
-    - Your summaries should include the following :
-        - Omit duplicate content, but increase the summary weight of duplicate content.
-        - Summarize by emphasizing concepts and arguments rather than case evidence.
-        - Summarize in 3 lines.
-        - Use the format of a bullet point.
+            **Instructions** :
+    You are an online content analysis expert. Given an internet content URL, you have the expertise to accurately and clearly summarize its content using the following methods:
+
+    Extracting key phrases: TF-IDF method
+    Summarizing the content: TextRank algorithm
+    Listing chapter headings: Clustering technique
+    Please provide me with the internet content URL so I can perform the following tasks and provide the results in Markdown format:
+
+    1) Content Title
+    2) Extract key phrases
+    3) Write a brief summary in 50 characters or less
+    4) Analyze the content to create a concise list of chapter headings
+    5) Summarize the entire post
+    - Include important details without omission
+    - Bold new terms and provide definitions at the end of the summary if necessary
+    - Summarize in 500 characters or less
+
+    Please do not add any content that is not included in the URL I provide. Answer in Korean.
     -text : {text}
     '''
         st.info(askGpt(prompt,st.session_state["OPENAI_API"]))
